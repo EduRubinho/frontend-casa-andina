@@ -80,7 +80,7 @@ Antes de comenzar, asegúrate de tener instalado:
 
 1. **Clonar el repositorio**  
    `git clone <url-del-repo>`  
-   `cd hc-frontend`
+   `cd frontend-casa-andina`
 
 2. **Instalar dependencias**  
    `npm install`
