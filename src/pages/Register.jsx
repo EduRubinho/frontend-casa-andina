@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { loginUser } from "../services/auth";
+import { registerUser } from "../services/auth";
 
-function Login() {
+function Register() {
   const [correo, setCorreo] = useState("");
   const [contrasena, setContrasena] = useState("");
   const [msg, setMsg] = useState("");
@@ -9,20 +9,16 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const data = await loginUser(correo, contrasena);
-
-      // Guardar token en localStorage
-      localStorage.setItem("token", data.token);
-
-      setMsg("✅ " + data.message);
+      const data = await registerUser(correo, contrasena);
+      setMsg(data.msg);
     } catch (error) {
-      setMsg("❌ " + error.message);
+      setMsg(error.message);
     }
   };
 
   return (
     <div>
-      <h2>🔑 Login</h2>
+      <h2>📝 Registro</h2>
       <form onSubmit={handleSubmit}>
         <input
           type="email"
@@ -40,11 +36,11 @@ function Login() {
           required
         />
         <br />
-        <button type="submit">Iniciar sesión</button>
+        <button type="submit">Registrarse</button>
       </form>
       {msg && <p>{msg}</p>}
     </div>
   );
 }
 
-export default Login;
+export default Register;
